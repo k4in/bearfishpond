@@ -9,7 +9,7 @@ export default function Buttons() {
   const increase = useBearStore((state) => state.increase);
 
   return (
-    <div className="flex gap-5 justify-center">
+    <div className="flex gap-5 justify-center mt-3">
       <Button type="button">New Pond</Button>
       <Button type="button" onClick={increase}>
         New Bear

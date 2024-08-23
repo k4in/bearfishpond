@@ -8,12 +8,12 @@ export default function Bears() {
   const bears = useBearStore((state) => state.bears);
 
   return (
-    <main className="mt-10">
+    <section className="bg-blue-200 p-10 flex flex-col gap-3 flex-1">
       {bears.length > 0 ? (
         bears.map((bear) => <Bear bear={bear} key={bear.name} />)
       ) : (
         <div>Click "New Bear" to add your first bear!</div>
       )}
-    </main>
+    </section>
   );
 }
