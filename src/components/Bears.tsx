@@ -5,7 +5,9 @@ import { useBearStore } from '../store/useBearStore';
 export default function Bears() {
   console.log('[re-rendering: Bears]');
 
-  const bears = useBearStore((state) => state.bears);
+  const bears = useBearStore((state) => Object.values(state.bears));
+
+  console.log(bears);
 
   return (
     <section className="bg-blue-200 p-10 flex flex-col gap-3 flex-1">

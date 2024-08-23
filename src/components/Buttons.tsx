@@ -5,7 +5,6 @@ import { useBearStore } from '../store/useBearStore';
 export default function Buttons() {
   console.log('[re-rendering: Buttons]');
 
-  const bears = useBearStore((state) => state.bears);
   const increase = useBearStore((state) => state.increase);
 
   return (
@@ -15,9 +14,6 @@ export default function Buttons() {
         New Bear
       </Button>
       <Button type="button">Reset Ponds</Button>
-      <Button type="button" onClick={() => console.log(bears)}>
-        Log Bears
-      </Button>
     </div>
   );
 }

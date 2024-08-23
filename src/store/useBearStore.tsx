@@ -5,28 +5,30 @@ export interface BearType {
   name: string;
   fishEaten: number;
 }
-interface InitialBearStateType {
-  bears: BearType[];
+
+interface BearsType {
+  [id: string]: BearType;
 }
-interface BearStateType extends InitialBearStateType {
+
+interface BearStateType {
+  bears: BearsType;
   increase: () => void;
   remove: (name: string) => void;
 }
 
-const initialState: InitialBearStateType = {
-  bears: [],
-};
+const initialState = { bears: {} as BearsType };
 
 export const useBearStore = create<BearStateType>((set) => ({
   ...initialState,
   increase: () =>
     set((state) => {
-      const filteredNames = bearNames.filter((name) => !state.bears.find((bear) => bear.name === name));
-      const newName = filteredNames[Math.floor(Math.random() * filteredNames.length - 1)];
+      const namesInUse = Object.keys(state.bears);
+      const filteredNames = bearNames.filter((name) => !namesInUse.includes(name));
+      const name = filteredNames[Math.floor(Math.random() * filteredNames.length)];
 
-      return { bears: [...state.bears, { name: newName, fishEaten: 0 }] };
+      return { bears: { ...state.bears, [name]: { name: name, fishEaten: 0 } } };
     }),
-  remove: (name: string) => set((state) => ({ bears: state.bears.filter((bear) => bear.name != name) })),
+  remove: (name) => console.log(name),
 }));
 
 // export const useBearName = create
