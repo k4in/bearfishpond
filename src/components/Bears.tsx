@@ -3,6 +3,8 @@ import Bear from '../components/Bear';
 import { useBearStore } from '../store/useBearStore';
 
 export default function Bears() {
+  console.log('[re-rendering: Bears]');
+
   const bears = useBearStore((state) => state.bears);
 
   return (

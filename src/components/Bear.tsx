@@ -7,7 +7,7 @@ interface BearComponentType {
 }
 
 export default function Bear({ bear }: BearComponentType) {
-  console.log('[re-rendering Bear]', bear.name);
+  console.log('[re-rendering: Bear]', bear.name);
 
   const remove = useBearStore((state) => state.remove);
 

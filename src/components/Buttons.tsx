@@ -3,7 +3,7 @@ import Button from '../ui/Button';
 import { useBearStore } from '../store/useBearStore';
 
 export default function Buttons() {
-  console.log('[re-rendering Buttons]');
+  console.log('[re-rendering: Buttons]');
 
   const bears = useBearStore((state) => state.bears);
   const increase = useBearStore((state) => state.increase);

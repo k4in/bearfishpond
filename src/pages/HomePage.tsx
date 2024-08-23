@@ -3,7 +3,7 @@ import Buttons from '../components/Buttons';
 import Bears from '../components/Bears';
 
 export default function HomePage() {
-  console.log('[re-rendering HomePage]');
+  console.log('[re-rendering: HomePage]');
   // const increase = useBearStore((state) => state.increase);
 
   return (
