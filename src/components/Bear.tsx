@@ -6,11 +6,7 @@ import Button from '../ui/Button';
 
 import { BearType, useBearStore } from '../store/useBearStore';
 
-interface BearComponentType {
-  bear: BearType;
-}
-
-const Bear = memo(({ bear }: BearComponentType) => {
+const Bear = memo(({ bear }: { bear: BearType }) => {
   console.log('[re-rendering: Bear]', bear.name);
 
   const changeActivityState = useBearStore((state) => state.changeActivityState);
