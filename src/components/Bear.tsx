@@ -1,22 +1,39 @@
-import { BearType } from '../store/useBearStore';
+import { memo } from 'react';
 
-import { useBearStore } from '../store/useBearStore';
+import { X, Check } from 'lucide-react';
+
+import Button from '../ui/Button';
+
+import { BearType, useBearStore } from '../store/useBearStore';
 
 interface BearComponentType {
   bear: BearType;
 }
 
-export default function Bear({ bear }: BearComponentType) {
+const Bear = memo(({ bear }: BearComponentType) => {
   console.log('[re-rendering: Bear]', bear.name);
 
-  const remove = useBearStore((state) => state.remove);
+  const changeActivityState = useBearStore((state) => state.changeActivityState);
+  const eatFish = useBearStore((state) => state.eatFish);
 
   return (
-    <article className="w-48 bg-blue-400 px-3 py-1 flex items-center justify-between">
-      <p>{bear.name}</p>
-      <button type="button" onClick={() => remove(bear.name)} className="text-red-500 text-xl">
-        X
-      </button>
+    <article
+      className={`flex flex-col w-48 gap-2 p-5 ${bear.isActive ? 'bg-blue-400' : 'bg-neutral-300 text-neutral-500'}`}
+    >
+      <header className="flex items-center justify-between">
+        <h2>{bear.name}</h2>
+        <button type="button" onClick={() => changeActivityState(bear.name)} className="text-xl text-red-500">
+          {bear.isActive ? <X className="w-6 h-6 text-red-500" /> : <Check className="w-6 h-6 text-green-600" />}
+        </button>
+      </header>
+      <p>Fish Eaten: {bear.fishEaten}</p>
+      {bear.isActive && (
+        <Button type="button" onClick={() => eatFish(bear.name)}>
+          Eat Fish
+        </Button>
+      )}
     </article>
   );
-}
+});
+
+export default Bear;

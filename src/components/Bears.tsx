@@ -7,10 +7,8 @@ export default function Bears() {
 
   const bears = useBearStore((state) => Object.values(state.bears));
 
-  console.log(bears);
-
   return (
-    <section className="bg-blue-200 p-10 flex flex-col gap-3 flex-1">
+    <section className="flex flex-col flex-1 gap-3 p-10 bg-blue-200">
       {bears.length > 0 ? (
         bears.map((bear) => <Bear bear={bear} key={bear.name} />)
       ) : (
